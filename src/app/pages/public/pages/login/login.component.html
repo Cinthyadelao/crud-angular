@@ -1,17 +1,31 @@
-<h1>Login</h1>
-<form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="container">
+  <div class="col-12">
+    <h1>Login</h1>
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="correo">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div *ngIf="f.correo.errors && (f.correo?.dirty || f.correo?.touched)" class="alert alert-danger">
+          <div *ngIf="f.correo?.errors?.required">
+            El correo es requerido.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="contrasena">
+        <div *ngIf="f.contrasena.errors && (f.contrasena?.dirty || f.contrasena?.touched)" class="alert alert-danger">
+          <div *ngIf="f.contrasena?.errors?.required">
+            Contrasena es requerida.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <a routerLink="/public/recuperar-contrasena">Recuperar contrasena</a>
+      </div>
+      <button [disabled]="formLogin.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button routerLink="/private/home" type="button" class="btn btn-primary">Submit</button>
-</form>
+</div>
