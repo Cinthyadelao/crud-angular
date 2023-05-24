@@ -16,7 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
       }
     ]
-  }
+  },
+  { path: 'recuperar-contrasena', loadChildren: () => import('./pages/recuperar-contrasena/recuperar-contrasena.module').then(m => m.RecuperarContrasenaModule) }
 ];
 
 @NgModule({
