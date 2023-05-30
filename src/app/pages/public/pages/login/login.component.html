@@ -27,5 +27,12 @@
       </div>
       <button [disabled]="formLogin.invalid" type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <div class="spinnerLoad">
+      <div *ngIf="isLoading" class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <app-alert *ngIf="isSuccesfull" [mensaje]="'correo y/o contrasena no coinciden'"></app-alert>
   </div>
 </div>
